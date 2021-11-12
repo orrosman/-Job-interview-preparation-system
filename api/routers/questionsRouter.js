@@ -12,6 +12,16 @@ router.get('/list', (req, res) => {
 	});
 });
 
+router.put('/update', (req, res) => {
+	const id = req.query.id;
+	const updatedQuestion = req.body;
+
+	//get a question object and destruct it to its properties, returns the old question that was updated
+	Question.findByIdAndUpdate(id, { ...updatedQuestion }).then((response) => {
+		res.send(response);
+	});
+});
+
 router.post('/create', (req, res) => {
 	const question = req.body;
 
