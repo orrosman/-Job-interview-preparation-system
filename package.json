@@ -4,6 +4,7 @@
 	"description": "Am API to help you better prepare to your next job interview",
 	"main": "index.js",
 	"scripts": {
+		"dev": "nodemon ./api/server.js",
 		"fill-questions": "node ./scripts/batch-insert-questions.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
