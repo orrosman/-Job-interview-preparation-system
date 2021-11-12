@@ -7,6 +7,13 @@ const router = express.Router();
 
 mongoose.connect(process.env.DATABASE_URL);
 
+router.get('/random', async (req, res) => {
+	const numberOfQuestions = await Question.count();
+	const randomIndex = Math.floor(Math.random() * numberOfQuestions);
+	const randomQuestion = await Question.findOne().skip(randomIndex);
+
+	res.send(randomQuestion);
+});
 router.get('/list', (req, res) => {
 	Question.find({}).then((response) => {
 		res.send(response);
