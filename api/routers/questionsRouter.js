@@ -21,4 +21,12 @@ router.post('/create', (req, res) => {
 	});
 });
 
+router.post('/remove/:id', (req, res) => {
+	const id = req.params.id;
+
+	Question.findByIdAndDelete(id).then((response) => {
+		res.send(response);
+	});
+});
+
 module.exports = router;
