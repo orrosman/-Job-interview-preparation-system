@@ -12,4 +12,13 @@ router.get('/list', (req, res) => {
 	});
 });
 
+router.post('/create', (req, res) => {
+	const question = req.body;
+
+	//get a question object and destruct it to its properties
+	Question.create({ ...question }).then((response) => {
+		res.send(response);
+	});
+});
+
 module.exports = router;
