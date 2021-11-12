@@ -1,29 +1,31 @@
 {
-  "name": "-Job-interview-preparation-system",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/orrosman/-Job-interview-preparation-system.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/orrosman/-Job-interview-preparation-system/issues"
-  },
-  "homepage": "https://github.com/orrosman/-Job-interview-preparation-system#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "mongoose": "^6.0.12"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+	"name": "Job-interview-preparation-system",
+	"version": "1.0.0",
+	"description": "Am API to help you better prepare to your next job interview",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon ./api/server.js",
+		"fill-questions": "node ./scripts/batch-insert-questions.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/orrosman/-Job-interview-preparation-system.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/orrosman/-Job-interview-preparation-system/issues"
+	},
+	"homepage": "https://github.com/orrosman/-Job-interview-preparation-system#readme",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"mongoose": "^6.0.12"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
 }
