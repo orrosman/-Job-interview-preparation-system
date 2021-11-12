@@ -29,4 +29,12 @@ router.post('/remove/:id', (req, res) => {
 	});
 });
 
+router.get('/read/by/difficulty/:difficulty', (req, res) => {
+	const difficulty = req.params.difficulty;
+
+	Question.find({ difficulty: { $gte: difficulty } }).then((response) => {
+		res.send(response);
+	});
+});
+
 module.exports = router;
