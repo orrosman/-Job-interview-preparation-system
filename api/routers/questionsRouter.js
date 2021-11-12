@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Question = require('../../models/question');
+const validate = require('../middleware/validator.js');
 require('dotenv').config();
 const router = express.Router();
 
@@ -12,9 +13,9 @@ router.get('/list', (req, res) => {
 	});
 });
 
-router.put('/update', (req, res) => {
+router.put('/update', validate.validateQuestion, (req, res) => {
 	const id = req.query.id;
-	const updatedQuestion = req.body;
+	const updatedQuestion = req.validQuestion;
 
 	//get a question object and destruct it to its properties, returns the old question that was updated
 	Question.findByIdAndUpdate(id, { ...updatedQuestion }).then((response) => {
@@ -22,8 +23,8 @@ router.put('/update', (req, res) => {
 	});
 });
 
-router.post('/create', (req, res) => {
-	const question = req.body;
+router.post('/create', validate.validateQuestion, (req, res) => {
+	const question = req.validQuestion;
 
 	//get a question object and destruct it to its properties
 	Question.create({ ...question }).then((response) => {
