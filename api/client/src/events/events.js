@@ -26,6 +26,7 @@ function addQuestionToPage(question) {
 
 	//build question structure
 	const titleElement = document.createElement('h5');
+	titleElement.setAttribute('class', 'd-flex justify-content-center');
 	titleElement.innerText = question.title;
 	const answersElement = buildAnswersList(
 		question.answers,
@@ -38,7 +39,10 @@ function addQuestionToPage(question) {
 
 function buildAnswersList(answers, correctAnswer) {
 	const answersElement = document.createElement('ul');
-	answersElement.setAttribute('class', 'list-group list-group-flush');
+	answersElement.setAttribute(
+		'class',
+		'list-group list-group-flush text-center'
+	);
 	for (const answer of answers) {
 		const answerElement = document.createElement('li');
 		answerElement.setAttribute('class', 'list-group-item');
