@@ -2,7 +2,7 @@
 
 In this project I made a website that shows random questions from a MongoDB database, and every one (even you😉) can support and upload new questions.
 
-[Here's a link to the website](https://pure-shelf-42837.herokuapp.com/)
+[Here's a link to the website](https://job-questions.herokuapp.com/)
 
 <img src="./assets/websit-demo.png" width="800px">
 
