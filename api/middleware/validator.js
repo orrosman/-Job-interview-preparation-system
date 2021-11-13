@@ -30,13 +30,25 @@ function validateQuestion(req, res, next) {
 			}
 
 			validQuestion.answers = [];
+			let hasCorrectAnswer = false;
+
 			answers.forEach((answer) => {
 				if (answer.trim() == '') {
 					throw { status: 400, message: `Answer #${answer} is not valid` };
 				} else {
 					validQuestion.answers.push(answer.trim());
+					if (answer.trim() == validQuestion.correctAnswer) {
+						hasCorrectAnswer = true;
+					}
 				}
 			});
+
+			if (!hasCorrectAnswer) {
+				throw {
+					status: 400,
+					message: `Non of the answers match the correct answer`,
+				};
+			}
 
 			const difficultyValue = Number(difficulty); //parse difficult to a number
 			if (isNaN(difficulty)) {
