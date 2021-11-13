@@ -26,6 +26,7 @@
 		<title>Job interview preparation questions</title>
 	</head>
 	<body>
+		<!-- Navbar -->
 		<nav class="navbar navbar-expand navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand">Job interview preparation</a>
@@ -51,7 +52,17 @@
 								aria-current="page"
 								href="#"
 								data-bs-toggle="modal"
-								data-bs-target="#exampleModal"
+								data-bs-target="#questionModal"
+								>Add a question</a
+							>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="#"
+								data-bs-toggle="modal"
+								data-bs-target="#aboutModal"
 								>About</a
 							>
 						</li>
@@ -59,18 +70,20 @@
 				</div>
 			</div>
 		</nav>
+
+		<!-- Modals -->
 		<div class="container">
 			<div
 				class="modal fade"
-				id="exampleModal"
+				id="aboutModal"
 				tabindex="-1"
-				aria-labelledby="exampleModalLabel"
+				aria-labelledby="aboutModalLabel"
 				aria-hidden="true"
 			>
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">
+							<h5 class="modal-title" id="aboutModalLabel">
 								About this tool
 							</h5>
 							<button
@@ -106,6 +119,89 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="container">
+			<div
+				class="modal fade"
+				id="questionModal"
+				tabindex="-1"
+				aria-labelledby="questionModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="aboutModalLabel">
+								Add a question
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="mb-3">
+									<label for="question-title" class="form-label">Question Title:</label>
+									<input type="text" class="form-control" id="question-title" placeholder="Title" required>
+								</div>
+
+								<div class="mb-3">
+									<label for="correct-answer" class="form-label">Correct Answer:</label>
+									<input type="text" class="form-control" id="correct-answer" placeholder="Correct Answer" required>
+								</div>
+
+							<p class="form-text">You don't have to fill all fake answers</p>
+
+								<div class="mb-3">
+									<label for="fake-answer" class="form-label">Fake Answer 1:</label>
+									<input type="text" class="form-control" id="fake-answer-1" placeholder="Fake Answer">
+								</div>
+
+								<div class="mb-3">
+									<label for="fake-answer" class="form-label">Fake Answer 2:</label>
+									<input type="text" class="form-control" id="fake-answer-2" placeholder="Fake Answer">
+								</div>
+
+								<div class="mb-3">
+									<label for="fake-answer" class="form-label">Fake Answer 3:</label>
+									<input type="text" class="form-control" id="fake-answer-3" placeholder="Fake Answer">
+								</div>
+								
+								<div class="mb-3">
+									<label for="difficulty" class="form-label">Difficulty</label>
+									<input type="range" list="tickmarks" class="form-range" min="1" max="10" id="difficulty">
+								</div>
+
+							</form>
+								
+						</div>
+						<div class="modal-footer">
+							<button
+							id="new-question-button"
+								type="button"
+								class="btn btn-primary"
+								data-bs-dismiss="modal"
+							>
+								Post new question
+							</button>
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Close
+							</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Questions and scores -->
 		<h5 class="d-flex justify-content-center">
 			Prepare for your next Programming/Tech job with great questions!
 		</h5>
@@ -138,6 +234,7 @@
 			class="vstack gap-2 col-md-5 mx-auto d-flex justify-content-center"
 		></div>
 	</body>
+	<!-- Footer -->
 	<footer
 		class="
 			position-absolute
