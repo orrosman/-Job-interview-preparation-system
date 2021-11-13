@@ -6,7 +6,7 @@ module.exports = {
 	entry: { main: path.resolve(__dirname, './api/client/src/index.js') },
 	output: {
 		path: path.resolve(__dirname, './api/dist'),
-		filename: '[name].bundle.js',
+		filename: 'index.js',
 		clean: true,
 	},
 

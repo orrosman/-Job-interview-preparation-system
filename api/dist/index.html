@@ -1,1 +1,286 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/><script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script><script type="module" src="events/events.js" defer="defer"></script><title>Job interview preparation questions</title><script defer="defer" src="main.bundle.js"></script></head><body><nav class="navbar navbar-expand navbar-dark bg-dark"><div class="container-fluid"><a class="navbar-brand">Job interview preparation</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#questionModal">Add a question</a></li><li class="nav-item"><a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a></li></ul></div></div></nav><div class="container"><div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="aboutModalLabel">About this tool</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><p></p>Hi there👋🙋‍♂️,<br>This tool was created to help you better prepare for your next Programming/Tech job.<br><br>This site is running on heroku NodeJS server and connected to a MongoDB database to store all the questions.<br><br>I encourage you to help and add new questions you see fit.<br><br>Hope you will enjoy using this fun tool as I had fun building it!😁<p></p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div></div><div class="container"><div class="modal fade" id="questionModal" tabindex="-1" aria-labelledby="questionModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="aboutModalLabel">Add a question</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><form id="new-question-form"><div class="mb-3"><label for="question-title" class="form-label">Question Title:</label> <input class="form-control" id="question-title" placeholder="Title" required></div><div class="mb-3"><label for="correct-answer" class="form-label">Correct Answer:</label> <input class="form-control" id="correct-answer" placeholder="Correct Answer" required></div><p class="form-text">You don't have to fill all fake answers</p><div class="mb-3"><label for="fake-answer" class="form-label">Fake Answer 1:</label> <input class="form-control" id="fake-answer-1" placeholder="Fake Answer"></div><div class="mb-3"><label for="fake-answer" class="form-label">Fake Answer 2:</label> <input class="form-control" id="fake-answer-2" placeholder="Fake Answer"></div><div class="mb-3"><label for="fake-answer" class="form-label">Fake Answer 3:</label> <input class="form-control" id="fake-answer-3" placeholder="Fake Answer"></div><div class="mb-3"><label for="difficulty" class="form-label">Difficulty</label> <input type="range" list="tickmarks" class="form-range" min="1" max="10" id="difficulty"></div><div class="modal-footer border-top-0 d-flex justify-content-center"><button id="new-question-button" type="submit" class="btn btn-primary">Post new question</button></div></form></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div></div><h5 class="d-flex justify-content-center">Prepare for your next Programming/Tech job with great questions!</h5><div class="container score"><div class="row"><h6>Your Score:</h6><div class="col-xs">✔Right: <span id="right">0</span></div><div class="col">❌Wrong: <span id="wrong">0</span></div></div></div><br/><div class="container d-flex justify-content-center"><input id="question-button" type="button" class="btn btn-success btn-lg" value="get a question!"/></div><br/><div id="question" class="vstack gap-2 col-md-5 mx-auto d-flex justify-content-center"></div></body><footer class="position-absolute bottom-0 start-50 translate-middle-x bg-dark text-center text-white w-100"><div class="container p-4 pb-0"><section class="mb-4"><a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/orrosman/" role="button" target="_blank"><i class="bi bi-linkedin"></i></a><a class="btn btn-outline-light btn-floating m-1" href="https://github.com/orrosman" role="button" target="_blank"><i class="bi bi-github"></i></a></section></div><div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">© 2021 Copyright: <a class="text-white" href="https://github.com/orrosman">Or Rosman</a></div></footer></html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<title>Job interview preparation questions</title>
+		<script defer="defer" src="index.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand">Job interview preparation</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div
+					class="collapse navbar-collapse justify-content-end"
+					id="navbarSupportedContent"
+				>
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="#"
+								data-bs-toggle="modal"
+								data-bs-target="#questionModal"
+								>Add a question</a
+							>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="#"
+								data-bs-toggle="modal"
+								data-bs-target="#aboutModal"
+								>About</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div
+				class="modal fade"
+				id="aboutModal"
+				tabindex="-1"
+				aria-labelledby="aboutModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="aboutModalLabel">About this tool</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<p></p>
+							Hi there👋🙋‍♂️,<br />This tool was created to help you better
+							prepare for your next Programming/Tech job.<br /><br />This site
+							is running on heroku NodeJS server and connected to a MongoDB
+							database to store all the questions.<br /><br />I encourage you to
+							help and add new questions you see fit.<br /><br />Hope you will
+							enjoy using this fun tool as I had fun building it!😁
+							<p></p>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div
+				class="modal fade"
+				id="questionModal"
+				tabindex="-1"
+				aria-labelledby="questionModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="aboutModalLabel">Add a question</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<form id="new-question-form">
+								<div class="mb-3">
+									<label for="question-title" class="form-label"
+										>Question Title:</label
+									>
+									<input
+										class="form-control"
+										id="question-title"
+										placeholder="Title"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="correct-answer" class="form-label"
+										>Correct Answer:</label
+									>
+									<input
+										class="form-control"
+										id="correct-answer"
+										placeholder="Correct Answer"
+										required
+									/>
+								</div>
+								<p class="form-text">You don't have to fill all fake answers</p>
+								<div class="mb-3">
+									<label for="fake-answer" class="form-label"
+										>Fake Answer 1:</label
+									>
+									<input
+										class="form-control"
+										id="fake-answer-1"
+										placeholder="Fake Answer"
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="fake-answer" class="form-label"
+										>Fake Answer 2:</label
+									>
+									<input
+										class="form-control"
+										id="fake-answer-2"
+										placeholder="Fake Answer"
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="fake-answer" class="form-label"
+										>Fake Answer 3:</label
+									>
+									<input
+										class="form-control"
+										id="fake-answer-3"
+										placeholder="Fake Answer"
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="difficulty" class="form-label">Difficulty</label>
+									<input
+										type="range"
+										list="tickmarks"
+										class="form-range"
+										min="1"
+										max="10"
+										id="difficulty"
+									/>
+								</div>
+								<div
+									class="
+										modal-footer
+										border-top-0
+										d-flex
+										justify-content-center
+									"
+								>
+									<button
+										id="new-question-button"
+										type="submit"
+										class="btn btn-primary"
+									>
+										Post new question
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Close
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h5 class="d-flex justify-content-center">
+			Prepare for your next Programming/Tech job with great questions!
+		</h5>
+		<div class="container score">
+			<div class="row">
+				<h6>Your Score:</h6>
+				<div class="col-xs">✔Right: <span id="right">0</span></div>
+				<div class="col">❌Wrong: <span id="wrong">0</span></div>
+			</div>
+		</div>
+		<br />
+		<div class="container d-flex justify-content-center">
+			<input
+				id="question-button"
+				type="button"
+				class="btn btn-success btn-lg"
+				value="get a question!"
+			/>
+		</div>
+		<br />
+		<div
+			id="question"
+			class="vstack gap-2 col-md-5 mx-auto d-flex justify-content-center"
+		></div>
+	</body>
+	<footer
+		class="
+			position-absolute
+			bottom-0
+			start-50
+			translate-middle-x
+			bg-dark
+			text-center text-white
+			w-100
+		"
+	>
+		<div class="container p-4 pb-0">
+			<section class="mb-4">
+				<a
+					class="btn btn-outline-light btn-floating m-1"
+					href="https://www.linkedin.com/in/orrosman/"
+					role="button"
+					target="_blank"
+					><i class="bi bi-linkedin"></i></a
+				><a
+					class="btn btn-outline-light btn-floating m-1"
+					href="https://github.com/orrosman"
+					role="button"
+					target="_blank"
+					><i class="bi bi-github"></i
+				></a>
+			</section>
+		</div>
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+			© 2021 Copyright:
+			<a class="text-white" href="https://github.com/orrosman">Or Rosman</a>
+		</div>
+	</footer>
+</html>
