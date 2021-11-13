@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon ./api/server.js",
+		"build": "webpack",
 		"fill-questions": "node ./scripts/batch-insert-questions.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
