@@ -1,6 +1,6 @@
 // import * as axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://pure-shelf-42837.herokuapp.com';
 
 export async function getQuestion() {
 	const response = await axios.get(`${BASE_URL}/random`);
