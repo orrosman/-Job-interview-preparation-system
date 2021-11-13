@@ -142,7 +142,7 @@
 							></button>
 						</div>
 						<div class="modal-body">
-							<form>
+							<form id="new-question-form"> 
 								<div class="mb-3">
 									<label for="question-title" class="form-label">Question Title:</label>
 									<input type="text" class="form-control" id="question-title" placeholder="Title" required>
@@ -175,18 +175,18 @@
 									<input type="range" list="tickmarks" class="form-range" min="1" max="10" id="difficulty">
 								</div>
 
-							</form>
-								
+								<div class="modal-footer border-top-0 d-flex justify-content-center">
+									<button
+									id="new-question-button"
+										type="submit"
+										class="btn btn-primary"
+									>
+										Post new question
+									</button>    
+						    	</div>
+							</form >
 						</div>
 						<div class="modal-footer">
-							<button
-							id="new-question-button"
-								type="button"
-								class="btn btn-primary"
-								data-bs-dismiss="modal"
-							>
-								Post new question
-							</button>
 							<button
 								type="button"
 								class="btn btn-secondary"

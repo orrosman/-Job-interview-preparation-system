@@ -1,6 +1,7 @@
 import * as network from '../network/network.js';
 
 const questionButton = document.querySelector('#question-button');
+const addQuestionButton = document.querySelector('#new-question-button');
 
 async function getQuestion() {
 	const question = await network.getQuestion();
@@ -77,3 +78,46 @@ function handleScores(isCorrect) {
 	}
 	getQuestion();
 }
+
+const questionForm = document.getElementById('new-question-form');
+questionForm.addEventListener('submit', async (e) => {
+	const properties = document.querySelectorAll('#new-question-form input');
+	//get data from the form
+	const data = Array.from(properties).reduce(
+		(acc, input) => ({ ...acc, [input.id]: input.value }),
+		{}
+	);
+
+	//remove empty answers
+	for (const property of Object.entries(data)) {
+		if (property[1] == '') {
+			delete data[property[0]];
+		}
+	}
+
+	//put all answers in array
+	let answers = [];
+	answers.push(data['correct-answer']);
+	for (const property of Object.entries(data)) {
+		if (
+			property[0] != 'difficulty' &&
+			property[0] != 'question-title' &&
+			property[0] != 'correct-answer'
+		) {
+			answers.push(property[1]);
+		}
+	}
+	const newQuestion = {
+		title: data['question-title'],
+		correctAnswer: data['correct-answer'],
+		answers: answers,
+		difficulty: data['difficulty'],
+	};
+
+	const res = await network.postNewQuestion(newQuestion);
+	if ('message' in res) {
+		alert(res.message);
+	} else {
+		alert('Your question was added successfully!😊');
+	}
+});
